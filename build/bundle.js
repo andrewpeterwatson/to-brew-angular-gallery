@@ -53,6 +53,7 @@
 	angular.module('toBrewApp', []);
 
 	__webpack_require__(8);
+	__webpack_require__(13);
 
 /***/ },
 /* 1 */
@@ -31884,13 +31885,112 @@
 /* 10 */
 /***/ function(module, exports) {
 
-	module.exports = "<main class=\"app-main\">\n  <h1>hello world</h1>\n</main>\n";
+	module.exports = "<main class=\"app-main\">\n  <app-nav></app-nav>\n  <app-method-gallery></app-method-gallery>\n</main>\n";
 
 /***/ },
 /* 11 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 12 */,
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	__webpack_require__(14);
+	__webpack_require__(18);
+
+/***/ },
+/* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var angular = __webpack_require__(6);
+
+	angular.module('toBrewApp').controller('AppMethodGalleryController', [AppMethodGalleryController]);
+
+	function AppMethodGalleryController() {
+	  this.methodImage = {
+	    title: '',
+	    desc: '',
+	    imgSrc: ''
+	  };
+
+	  this.imageIndex = 0;
+	  this.cycleForward = function (imageIndex) {
+	    if (imageIndex === this.images.length - 1) return this.imageIndex;
+	    return this.imageIndex++;
+	  };
+	  this.cycleBackward = function (imageIndex) {
+	    if (imageIndex === 0) return this.imageIndex;
+	    return this.imageIndex--;
+	  };
+
+	  this.images = [{
+	    title: 'cave1',
+	    desc: 'the door within',
+	    imgSrc: __webpack_require__(15)
+	  }, {
+	    title: 'cave2',
+	    desc: 'entrance',
+	    imgSrc: __webpack_require__(16)
+	  }, {
+	    title: 'cave3',
+	    desc: 'the long high bridge',
+	    imgSrc: __webpack_require__(17)
+	  }];
+	}
+
+/***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "2811c440b8033f4440f995d57b9977ee.jpg";
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "2a6159b8a582dd0f67c4aac93472c954.jpg";
+
+/***/ },
+/* 17 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "26972a634845d2751bba737e18ade4a7.jpg";
+
+/***/ },
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var angular = __webpack_require__(6);
+	angular.module('toBrewApp').directive('appMethodGallery', function () {
+	  return {
+	    restrict: 'E',
+	    replace: true,
+	    scope: {
+	      imgSrc: '@',
+	      title: '@',
+	      desc: '@'
+	    },
+	    controller: 'AppMethodGalleryController',
+	    controllerAs: 'appMethodGalleryCtrl',
+	    bindToController: true,
+	    template: __webpack_require__(19)
+	  };
+	});
+
+/***/ },
+/* 19 */
+/***/ function(module, exports) {
+
+	module.exports = "<main class=\"app-method-gallery\">\n  <form novalidate>\n    <ol>\n      <li >\n        <button ng-click=\"appMethodGalleryCtrl.cycleBackward(appMethodGalleryCtrl.imageIndex)\"><</button>\n        <button ng-click=\"appMethodGalleryCtrl.cycleForward(appMethodGalleryCtrl.imageIndex)\">></button>\n        <h1>{{appMethodGalleryCtrl.images[appMethodGalleryCtrl.imageIndex].title}}</h1>\n        <p>{{appMethodGalleryCtrl.images[appMethodGalleryCtrl.imageIndex].desc}}</p>\n\n        <img src=\"{{appMethodGalleryCtrl.images[appMethodGalleryCtrl.imageIndex].imgSrc}}\"/>\n\n\n      </li>\n    </ol>\n\n  </form>\n</main>\n";
 
 /***/ }
 /******/ ]);

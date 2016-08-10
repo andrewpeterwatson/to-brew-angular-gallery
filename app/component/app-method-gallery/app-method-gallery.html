@@ -1,0 +1,16 @@
+<main class="app-method-gallery">
+  <form novalidate>
+    <ol>
+      <li >
+        <button ng-click="appMethodGalleryCtrl.cycleBackward(appMethodGalleryCtrl.imageIndex)"><</button>
+        <button ng-click="appMethodGalleryCtrl.cycleForward(appMethodGalleryCtrl.imageIndex)">></button>
+        <h1>{{appMethodGalleryCtrl.currentBrewMethod[0].step}}</h1>
+        <p>{{appMethodGalleryCtrl.currentBrewMethod[0].desc}}</p>
+
+        <img src="{{appMethodGalleryCtrl.currentBrewMethod[0].imgSrc}}"/>
+
+      </li>
+    </ol>
+
+  </form>
+</main>
