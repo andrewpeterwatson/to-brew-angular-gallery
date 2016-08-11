@@ -1,5 +1,5 @@
-[
-  "chemex" [
+{
+  "chemex": [
     {
       "step": "chemex1",
       "desc": "the door within",
@@ -15,7 +15,7 @@
       "imgSrc": "require('../../asset/image/longHighBridge.jpg')"
     }
   ],
-  "press" [
+  "press": [
     {
       "step": "press1",
       "desc": "the door within",
@@ -31,7 +31,7 @@
       "imgSrc": "require('../../asset/image/longHighBridge.jpg')"
     }
   ],
-  "aero" [
+  "aero": [
     {
       "step": "aero1",
       "desc": "the door within",
@@ -48,4 +48,4 @@
     }
   ]
 
-]
+}

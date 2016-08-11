@@ -1,6 +1,9 @@
 <main class="app-nav">
   <nav>
-  <h1>{{appMainCtrl.methodShown}}</h1>
-  <button ng-click="method()" name="'press'">chem</button>
+  <h1>{{currentBrewName}}</h1>
+  <button ng-click="appNavCtrl.currentBrew({selectedMethodArr: 'chemex'})">chem</button>
+  <button ng-click="appNavCtrl.currentBrew({selectedMethodArr: 'press'})">press</button>
+  <button ng-click="appNavCtrl.currentBrew({selectedMethodArr: 'aero'})">aero</button>
+  <button ng-click="appNavCtrl.currentBrew({selectedMethodArr: 'wave'})">wave</button>
 </nav>
 </main>

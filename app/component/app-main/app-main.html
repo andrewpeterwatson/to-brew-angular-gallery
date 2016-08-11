@@ -1,9 +1,6 @@
 <main class="app-main">
-  <app-nav method="appMainCtrl.showMethod()"></app-nav>
-  <!-- <app-nav method="appMainCtrl.showMethod('aero')"></app-nav> -->
-<p>
-  {{appMainCtrl.methodShown}}
-</p>
-  <h1>main hello</h1>
-  <!-- <app-method-gallery method="appMainCtrl.methodShown"></app-method-gallery> -->
+  <app-nav current-brew="appMainCtrl.selectedBrewMethod(selectedMethodArr)" ></app-nav>
+
+  <h1>{{appMainCtrl.currentMethod}}</h1>
+  <app-method-gallery current-gallery-brew="{currentBrewMethod: appMainCtrl.currentMethod}" ></app-method-gallery>
 </main>

@@ -1,7 +1,7 @@
 'use strict';
 
+// const brewMethod = require('../../data/brew-methods.json');
 require('./app-main.scss');
-
 const angular = require('angular');
 
 angular.module('toBrewApp').directive('appMain', function() {
@@ -9,6 +9,8 @@ angular.module('toBrewApp').directive('appMain', function() {
     restrict: 'E',
     replace: true,
     scope: {
+      selectedMethodArr: '='
+      // currentGalleryBrew: '='
       // desc: '@',
       // title: '@',
       // imgSrc: '@'
@@ -20,12 +22,11 @@ angular.module('toBrewApp').directive('appMain', function() {
   };
 });
 
-function AppMainController(galleryService) {
+function AppMainController() {
+  this.currentMethod = 'press';
 
-  galleryService.methodShown = 'chemex';
-
-  galleryService.showMethod = function(name) {
-    galleryService.methodShown = name;
-    return;
+  this.selectedBrewMethod = function(brewMethod){
+    return this.currentMethod = brewMethod;
   };
+
 }

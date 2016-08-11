@@ -6,15 +6,17 @@ angular.module('toBrewApp').factory('galleryService', ['$log', galleryService]);
 function galleryService($log) {
 
   let service = {};
-  service.imageIndex = 0;
+  service.galleryIndex = 0;
 
-  service.cycleForward = function(imageIndex){
-    if(imageIndex === service.images.length - 1) return service.imageIndex;
-    return service.imageIndex++;
+  service.cycleForward = function(galleryIndex, imageArr){
+    if(service.galleryIndex === imageArr) {
+      return service.galleryIndex;
+    }
+    return service.galleryIndex++;
   };
-  service.cycleBackward = function(imageIndex){
-    if(imageIndex === 0) return service.imageIndex;
-    return service.imageIndex--;
+  service.cycleBackward = function(galleryIndex){
+    if(galleryIndex === 0) return service.galleryIndex;
+    return service.galleryIndex--;
   };
   $log.log(service);
   return service;
