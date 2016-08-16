@@ -10,10 +10,6 @@ angular.module('toBrewApp').directive('appMain', function() {
     replace: true,
     scope: {
       selectedMethodArr: '='
-      // currentGalleryBrew: '='
-      // desc: '@',
-      // title: '@',
-      // imgSrc: '@'
     },
     controller: ['galleryService', AppMainController],
     controllerAs: 'appMainCtrl',
@@ -23,10 +19,13 @@ angular.module('toBrewApp').directive('appMain', function() {
 });
 
 function AppMainController() {
+  // let galleryArr = {};
   this.currentMethod = 'press';
-
+  // galleryArr.currentGalleryIndex = 0;
   this.selectedBrewMethod = function(brewMethod){
+    // galleryArr.currentGalleryIndex = 0;
     return this.currentMethod = brewMethod;
+    // return galleryArr;
   };
 
 }

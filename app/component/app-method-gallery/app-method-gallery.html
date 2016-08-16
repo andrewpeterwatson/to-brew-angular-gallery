@@ -1,23 +1,24 @@
 <main class="app-method-gallery">
   <form novalidate>
-    <ol>
-      <li >
-        <button ng-click="appMethodGalleryCtrl.stepBackward()"><</button>
-        <button ng-click="appMethodGalleryCtrl.stepForward()">></button>
-        <h1>{{appMethodGalleryCtrl.brewMethods
-          [appMethodGalleryCtrl.currentGalleryBrew["currentBrewMethod"]]
-          [appMethodGalleryCtrl.currentBrewMethod]
-          ['step']}}
+        <button class="cycleButton" id="cycle-back" ng-click="appMethodGalleryCtrl.stepBackward()"><</button>
+        <button class="cycleButton" id="cycle-forward" ng-click="appMethodGalleryCtrl.stepForward()">></button>
+
+      <div class="recipeContainer">
+
+        <h1>
+          {{appMethodGalleryCtrl.currentGalleryMethod
+            [appMethodGalleryCtrl.currentGalleryBrew["currentBrewMethod"]]
+            [appMethodGalleryCtrl.currentBrewMethod].step}}
         </h1>
-        <p>{{appMethodGalleryCtrl.brewMethods[0][0].desc}}</p>
 
-        <pre>
-          {{appMainCtrl.testGallery}}
-        </pre>
-        <img src="{{appMethodGalleryCtrl.testBrew[0].imgSrc}}"/>
-
-      </li>
-    </ol>
-
+        <p>
+          do this:
+          <br>
+          {{appMethodGalleryCtrl.currentGalleryMethod
+            [appMethodGalleryCtrl.currentGalleryBrew["currentBrewMethod"]]
+            [appMethodGalleryCtrl.currentBrewMethod].desc}}
+        </p>
+      </div>
   </form>
+
 </main>

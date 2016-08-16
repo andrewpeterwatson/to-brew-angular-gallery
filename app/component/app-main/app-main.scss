@@ -1,5 +1,17 @@
 @import "../../scss/_theme.scss";
 
 .app-main {
+  z-index: 1;
+  position: relative;
   background-color: $app_bgGrey;
+}
+
+.app-nav {
+  z-index: 3;
+  position: absolute;
+}
+
+.app-method-gallery {
+  z-index: 2;
+  position: absolute;
 }

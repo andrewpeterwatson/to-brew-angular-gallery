@@ -1,0 +1,51 @@
+{
+  "chemex": [
+    {
+      "step": "chemex1",
+      "desc": "the door within",
+      "imgSrc": "../../asset/image/doorWithin.jpg"
+    },
+    {
+      "step": "chemex2",
+      "desc": "entrance",
+      "imgSrc":"../../asset/image/entrance.jpg"
+    },{
+      "step": "chemex3",
+      "desc": "the long high bridge",
+      "imgSrc": "../../asset/image/longHighBridge.jpg"
+    }
+  ],
+  "press": [
+    {
+      "step": "press1",
+      "desc": "the door within",
+      "imgSrc": "entrance.jpg"
+    },
+    {
+      "step": "press2",
+      "desc": "entrance",
+      "imgSrc": "doorWithin.jpg"
+    },{
+      "step": "press3",
+      "desc": "the long high bridge",
+      "imgSrc": "longHighBridge.jpg"
+    }
+  ],
+  "aero": [
+    {
+      "step": "aero1",
+      "desc": "the door within",
+      "imgSrc": "'../../asset/image/longHighBridge.jpg"
+    },
+    {
+      "step": "aero2",
+      "desc": "entrance",
+      "imgSrc":" '../../asset/image/entrance.jpg"
+    },{
+      "step": "aero3",
+      "desc": "the long high bridge",
+      "imgSrc": "'../../asset/image/doorWithin.jpg"
+    }
+  ]
+
+}
