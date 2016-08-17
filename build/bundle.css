@@ -1,4 +1,56 @@
 body {
   background-color: #add1e6; }
 .app-main {
+  z-index: 1;
+  position: relative;
   background-color: #add1e6; }
+
+.app-nav {
+  z-index: 3;
+  position: absolute; }
+
+.app-method-gallery {
+  z-index: 2;
+  position: absolute; }
+.app-method-gallery {
+  position: relative;
+  width: 100%;
+  height: 100%; }
+
+.cycleButton {
+  background-color: rgba(7, 15, 27, 0.56);
+  color: rgba(51, 50, 50, 0.87);
+  border: 0;
+  height: 150px;
+  width: 75px;
+  margin: -.5em;
+  margin-top: 20%;
+  font-size: 2.5em; }
+  .cycleButton:hover {
+    background-color: #e3e9ee;
+    color: #9e9e9e; }
+
+#cycle-back {
+  float: left; }
+
+#cycle-forward {
+  float: right; }
+
+.recipeContainer {
+  position: absolute;
+  background-color: rgba(7, 15, 27, 0.56);
+  margin-top: 7%;
+  margin-left: 5%;
+  width: 45em;
+  height: 30em; }
+.app-nav {
+  font-size: 2em;
+  width: 100%;
+  margin-top: -3%; }
+
+nav {
+  margin-left: 40%;
+  margin-top: 0; }
+
+.navButtons {
+  display: inline-block; }

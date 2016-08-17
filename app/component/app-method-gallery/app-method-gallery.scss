@@ -1,11 +1,14 @@
 @import "../../scss/_theme.scss";
 
 .app-method-gallery {
+  z-index: 0;
   position: relative;
   width: 100%;
   height: 100%;
 }
 .cycleButton {
+  position: absolute;
+  z-index: 3;
   background-color: $app-dark;
   color: rgba(#333232, 0.87);
   border: 0;
@@ -22,22 +25,43 @@
 }
 
 #cycle-back {
+  z-index: 4;
   float: left;
 }
 
 #cycle-forward {
   float: right;
+  margin-left: 96.5%;
 }
 
 .recipeContainer {
+  z-index: 2;
   position: absolute;
-  background-color: $app-dark;
   margin-top: 7%;
-  margin-left: 5%;
+  margin-left: 10%;
   width: 45em;
   height: 30em;
+}
 
-  h1 {
+.brew-step-img {
+  z-index: 2;
+  position: fixed;;
+  opacity: .8;
+  outline: 1px solid red;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  margin-left: -7px;
+  margin-top: -15px;
+}
 
-  }
+#recipe-step-name {
+  margin-top: 15%;
+  font-size: 6em;
+}
+
+#recipe-step-desc {
+  margin-top: -7%;
+  font-size: 1.3em;
 }

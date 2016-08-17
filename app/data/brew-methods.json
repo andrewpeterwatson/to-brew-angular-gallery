@@ -3,48 +3,48 @@
     {
       "step": "chemex1",
       "desc": "the door within",
-      "imgSrc": "require('../../asset/image/doorWithin.jpg')"
+      "imgSrc": "../../asset/image/doorWithin.jpg"
     },
     {
       "step": "chemex2",
       "desc": "entrance",
-      "imgSrc":" require('../../asset/image/entrance.jpg')"
+      "imgSrc":"e../../asset/image/ntrance.jpg"
     },{
       "step": "chemex3",
       "desc": "the long high bridge",
-      "imgSrc": "require('../../asset/image/longHighBridge.jpg')"
+      "imgSrc": "../../asset/image/longHighBridge.jpg"
     }
   ],
   "press": [
     {
       "step": "press1",
       "desc": "the door within",
-      "imgSrc": "require('../../asset/image/entrance.jpg')"
+      "imgSrc": "../../asset/image/entrance.jpg"
     },
     {
       "step": "press2",
       "desc": "entrance",
-      "imgSrc": "require('../../asset/image/doorWithin.jpg')"
+      "imgSrc": "../../asset/image/doorWithin.jpg"
     },{
       "step": "press3",
       "desc": "the long high bridge",
-      "imgSrc": "require('../../asset/image/longHighBridge.jpg')"
+      "imgSrc": "../../asset/image/longHighBridge.jpg"
     }
   ],
   "aero": [
     {
       "step": "aero1",
       "desc": "the door within",
-      "imgSrc": "require('../../asset/image/longHighBridge.jpg')"
+      "imgSrc": "../../asset/image/longHighBridge.jpg"
     },
     {
       "step": "aero2",
       "desc": "entrance",
-      "imgSrc":" require('../../asset/image/entrance.jpg')"
+      "imgSrc":"../../asset/image/ntrance.jpg"
     },{
       "step": "aero3",
       "desc": "the long high bridge",
-      "imgSrc": "require('../../asset/image/doorWithin.jpg')"
+      "imgSrc": "../../asset/image/doorWithin.jpg"
     }
   ]
 

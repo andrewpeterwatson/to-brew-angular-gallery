@@ -1,17 +1,20 @@
 <main class="app-method-gallery">
+  <!-- <div class="brew-step-img"> -->
+  <!-- </div> -->
+  <img class="brew-step-img" src="../../asset/image/entrance.jpg" alt="Description" />
   <form novalidate>
         <button class="cycleButton" id="cycle-back" ng-click="appMethodGalleryCtrl.stepBackward()"><</button>
         <button class="cycleButton" id="cycle-forward" ng-click="appMethodGalleryCtrl.stepForward()">></button>
 
       <div class="recipeContainer">
 
-        <h1>
+        <h1 id="recipe-step-name">
           {{appMethodGalleryCtrl.currentGalleryMethod
             [appMethodGalleryCtrl.currentGalleryBrew["currentBrewMethod"]]
             [appMethodGalleryCtrl.currentBrewMethod].step}}
         </h1>
 
-        <p>
+        <p id="recipe-step-desc">
           do this:
           <br>
           {{appMethodGalleryCtrl.currentGalleryMethod
@@ -20,5 +23,6 @@
         </p>
       </div>
   </form>
-
+  <!-- <pre>{{appMethodGalleryCtrl.currentGalleryMethod}}</pre> -->
+  <!-- <img ng-src="{{appMethodGalleryCtrl.testImg}}" alt="img"/> -->
 </main>
