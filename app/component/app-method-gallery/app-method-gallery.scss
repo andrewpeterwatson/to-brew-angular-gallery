@@ -1,6 +1,7 @@
 @import "../../scss/_theme.scss";
 
 .app-method-gallery {
+  color: white;
   z-index: 0;
   position: relative;
   width: 100%;
@@ -19,6 +20,7 @@
   font-size: 2.5em;
 
   &:hover {
+    border: 0 0 0;
     background-color: $app-light;
     color: #9e9e9e;
   };
@@ -60,8 +62,12 @@
   margin-top: 15%;
   font-size: 6em;
 }
-
-#recipe-step-desc {
-  margin-top: -7%;
+#brew-ratio {
+  position: absolute;
+  margin-top: -10%;
   font-size: 1.3em;
+}
+#recipe-step-desc {
+  margin-top: -4%;
+  font-size: 1.6em;
 }

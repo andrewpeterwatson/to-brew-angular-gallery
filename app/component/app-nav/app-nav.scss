@@ -13,4 +13,9 @@ nav {
 
 .navButtons {
   display: inline-block;
+
+  &:hover {
+  outline: white
+
+  }
 }

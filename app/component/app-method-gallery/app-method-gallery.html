@@ -1,7 +1,9 @@
 <main class="app-method-gallery">
   <!-- <div class="brew-step-img"> -->
   <!-- </div> -->
-  <img class="brew-step-img" src="../../asset/image/entrance.jpg" alt="Description" />
+  <img class="brew-step-img" ng-src="{{appMethodGalleryCtrl.currentGalleryMethod
+    [appMethodGalleryCtrl.currentGalleryBrew.currentBrewMethod]
+    [appMethodGalleryCtrl.currentBrewMethod].imgSrc}}" alt="Description" />
   <form novalidate>
         <button class="cycleButton" id="cycle-back" ng-click="appMethodGalleryCtrl.stepBackward()"><</button>
         <button class="cycleButton" id="cycle-forward" ng-click="appMethodGalleryCtrl.stepForward()">></button>
@@ -13,6 +15,14 @@
             [appMethodGalleryCtrl.currentGalleryBrew["currentBrewMethod"]]
             [appMethodGalleryCtrl.currentBrewMethod].step}}
         </h1>
+        <p id="brew-ratio">
+          brew ratio:
+          {{appMethodGalleryCtrl.currentGalleryMethod
+            [appMethodGalleryCtrl.currentGalleryBrew["currentBrewMethod"]]
+            [0].brewRatio}}g | brew timer: {{appMethodGalleryCtrl.currentGalleryMethod
+              [appMethodGalleryCtrl.currentGalleryBrew["currentBrewMethod"]]
+              [0].brewTimer}} min
+        </p>
 
         <p id="recipe-step-desc">
           do this:
@@ -23,6 +33,10 @@
         </p>
       </div>
   </form>
+  <!-- <p>
+    {{appMethodGalleryCtrl.testImg}}
+  </p> -->
+  <!-- <img src="../../asset/image/doorWithin.jpg" alt="" /> -->
   <!-- <pre>{{appMethodGalleryCtrl.currentGalleryMethod}}</pre> -->
   <!-- <img ng-src="{{appMethodGalleryCtrl.testImg}}" alt="img"/> -->
 </main>
