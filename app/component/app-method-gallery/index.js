@@ -3,7 +3,7 @@
 require('./app-method-gallery.scss');
 
 const angular = require('angular');
-// const testBrewMethods = require('../../../data/brew-methods.json');
+// const brewMethods = require('json!../../data/brew-methods.json');
 
 angular.module('toBrewApp').directive('appMethodGallery', function() {
   return {
@@ -21,69 +21,19 @@ angular.module('toBrewApp').directive('appMethodGallery', function() {
 
 function AppMethodGalleryController(galleryService) {
   this.currentBrewMethod = galleryService.galleryIndex;
-  // this.testGallery = testBrewMethods;
+  this.currentGalleryMethod = require('json!../../data/brew-methods.json');
+  this.testImg = this.currentGalleryMethod.chemex[1].imgSrc;
+
 
   this.stepForward = function() {
     galleryService.cycleForward(this.currentBrewMethod, 2);
+    console.log('testIMG', this.testImg);
     this.currentBrewMethod = galleryService.galleryIndex;
   };
   this.stepBackward = function(){
-    galleryService.cycleBackward(this.currentBrewMethod,2);
+    galleryService.cycleBackward(this.currentBrewMethod, 2);
     this.currentBrewMethod = galleryService.galleryIndex;
   };
 
-  this.brewMethods = {
-    chemex: [
-      {
-        'step': 'chemex1',
-        'desc': 'the door within',
-        'imgSrc': 'require(\'../../asset/image/doorWithin.jpg\')'
-      },
-      {
-        'step': 'chemex2',
-        'desc': 'entrance',
-        'imgSrc':' require(\'../../asset/image/entrance.jpg\')'
-      },{
-        'step': 'chemex3',
-        'desc': 'the long high bridge',
-        'imgSrc': 'require(\'../../asset/image/longHighBridge.jpg\')'
-      }
-    ],
-    press: [
-      {
-        'step': 'press1',
-        'desc': 'the door within',
-        'imgSrc': 'require(\'../../asset/image/entrance.jpg\')'
-      },
-      {
-        'step': 'press2',
-        'desc': 'entrance',
-        'imgSrc': 'require(\'../../asset/image/doorWithin.jpg\')'
-      },{
-        'step': 'press3',
-        'desc': 'the long high bridge',
-        'imgSrc': 'require(\'../../asset/image/longHighBridge.jpg\')'
-      }
-    ],
-    aero: [
-      {
-        'step': 'aero1',
-        'desc': 'the door within',
-        'imgSrc': 'require(\'../../asset/image/longHighBridge.jpg\')'
-      },
-      {
-        'step': 'aero2',
-        'desc': 'entrance',
-        'imgSrc':' require(\'../../asset/image/entrance.jpg\')'
-      },{
-        'step': 'aero3',
-        'desc': 'the long high bridge',
-        'imgSrc': 'require(\'../../asset/image/doorWithin.jpg\')'
-      }
-    ]
-
-
-
-  };
 
 }

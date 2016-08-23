@@ -53,7 +53,10 @@
 	angular.module('toBrewApp', []);
 
 	__webpack_require__(8);
+	// require('./data/brew-methods.json');
+	__webpack_require__(9);
 	__webpack_require__(13);
+	__webpack_require__(18);
 
 /***/ },
 /* 1 */
@@ -31857,8 +31860,27 @@
 
 	'use strict';
 
-	__webpack_require__(9);
-	__webpack_require__(11);
+	var angular = __webpack_require__(6);
+	angular.module('toBrewApp').factory('galleryService', ['$log', galleryService]);
+
+	function galleryService($log) {
+
+	  var service = {};
+	  service.galleryIndex = 0;
+
+	  service.cycleForward = function (galleryIndex, imageArr) {
+	    if (service.galleryIndex === imageArr) {
+	      return service.galleryIndex;
+	    }
+	    return service.galleryIndex++;
+	  };
+	  service.cycleBackward = function (galleryIndex) {
+	    if (galleryIndex === 0) return service.galleryIndex;
+	    return service.galleryIndex--;
+	  };
+	  $log.log(service);
+	  return service;
+	}
 
 /***/ },
 /* 9 */
@@ -31866,6 +31888,9 @@
 
 	'use strict';
 
+	// const brewMethod = require('../../data/brew-methods.json');
+
+	__webpack_require__(10);
 	var angular = __webpack_require__(6);
 
 	angular.module('toBrewApp').directive('appMain', function () {
@@ -31873,95 +31898,209 @@
 	    restrict: 'E',
 	    replace: true,
 	    scope: {
-	      desc: '@',
-	      title: '@',
-	      imgSrc: '@'
+	      selectedMethodArr: '='
 	    },
-	    template: __webpack_require__(10)
+	    controller: ['galleryService', AppMainController],
+	    controllerAs: 'appMainCtrl',
+	    bindToController: true,
+	    template: __webpack_require__(12)
 	  };
 	});
+
+	function AppMainController() {
+	  // let galleryArr = {};
+	  this.currentMethod = 'press';
+	  // galleryArr.currentGalleryIndex = 0;
+	  this.selectedBrewMethod = function (brewMethod) {
+	    // galleryArr.currentGalleryIndex = 0;
+	    return this.currentMethod = brewMethod;
+	    // return galleryArr;
+	  };
+	}
 
 /***/ },
 /* 10 */
 /***/ function(module, exports) {
 
-	module.exports = "<main class=\"app-main\">\n  <app-nav></app-nav>\n  <app-method-gallery></app-method-gallery>\n</main>\n";
-
-/***/ },
-/* 11 */
-/***/ function(module, exports) {
-
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 12 */,
+/* 11 */,
+/* 12 */
+/***/ function(module, exports) {
+
+	module.exports = "<main class=\"app-main\">\n  <app-nav current-brew=\"appMainCtrl.selectedBrewMethod(selectedMethodArr)\" ></app-nav>\n\n  <app-method-gallery current-gallery-brew=\"{currentBrewMethod: appMainCtrl.currentMethod}\" ></app-method-gallery>\n</main>\n";
+
+/***/ },
 /* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	__webpack_require__(14);
-	__webpack_require__(18);
-
-/***/ },
-/* 14 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
 
 	var angular = __webpack_require__(6);
+	// const brewMethods = require('json!../../data/brew-methods.json');
 
-	angular.module('toBrewApp').controller('AppMethodGalleryController', [AppMethodGalleryController]);
+	angular.module('toBrewApp').directive('appMethodGallery', function () {
+	  return {
+	    restrict: 'E',
+	    replace: true,
+	    scope: {
+	      currentGalleryBrew: '='
+	    },
+	    controller: ['galleryService', AppMethodGalleryController],
+	    controllerAs: 'appMethodGalleryCtrl',
+	    bindToController: true,
+	    template: __webpack_require__(16)
+	  };
+	});
 
-	function AppMethodGalleryController() {
-	  this.methodImage = {
-	    title: '',
-	    desc: '',
-	    imgSrc: ''
+	function AppMethodGalleryController(galleryService) {
+	  this.currentBrewMethod = galleryService.galleryIndex;
+	  this.currentGalleryMethod = __webpack_require__(17);
+	  // this.testImg = '../../asset/image/longHighBridge.jpg';
+	  // this.arrLength = this.brewMethods[0];
+
+	  // this.testGallery = testBrewMethods;
+
+	  this.stepForward = function () {
+	    galleryService.cycleForward(this.currentBrewMethod, 2);
+	    console.log(this.testImg);
+	    console.log('arrlength', this.arrLength);
+	    this.currentBrewMethod = galleryService.galleryIndex;
+	  };
+	  this.stepBackward = function () {
+	    galleryService.cycleBackward(this.currentBrewMethod, 2);
+	    this.currentBrewMethod = galleryService.galleryIndex;
 	  };
 
-	  this.imageIndex = 0;
-	  this.cycleForward = function (imageIndex) {
-	    if (imageIndex === this.images.length - 1) return this.imageIndex;
-	    return this.imageIndex++;
-	  };
-	  this.cycleBackward = function (imageIndex) {
-	    if (imageIndex === 0) return this.imageIndex;
-	    return this.imageIndex--;
-	  };
-
-	  this.images = [{
-	    title: 'cave1',
-	    desc: 'the door within',
-	    imgSrc: __webpack_require__(15)
-	  }, {
-	    title: 'cave2',
-	    desc: 'entrance',
-	    imgSrc: __webpack_require__(16)
-	  }, {
-	    title: 'cave3',
-	    desc: 'the long high bridge',
-	    imgSrc: __webpack_require__(17)
-	  }];
+	  // this.brewMethods = {
+	  //   chemex: [
+	  //     {
+	  //       'step': 'chemex1',
+	  //       'desc': 'the door within',
+	  //       'imgSrc': require('../../asset/image/doorWithin.jpg')
+	  //     },
+	  //     {
+	  //       'step': 'chemex2',
+	  //       'desc': 'entrance',
+	  //       'imgSrc': require('../../asset/image/entrance.jpg')
+	  //     },{
+	  //       'step': 'chemex3',
+	  //       'desc': 'the long high bridge',
+	  //       'imgSrc': require('../../asset/image/longHighBridge.jpg')
+	  //     }
+	  //   ],
+	  //   press: [
+	  //     {
+	  //       'step': 'press1',
+	  //       'desc': 'the door within',
+	  //       'imgSrc': require('../../asset/image/entrance.jpg')
+	  //     },
+	  //     {
+	  //       'step': 'press2',
+	  //       'desc': 'entrance',
+	  //       'imgSrc': require('../../asset/image/doorWithin.jpg')
+	  //     },{
+	  //       'step': 'press3',
+	  //       'desc': 'the long high bridge',
+	  //       'imgSrc': require('../../asset/image/longHighBridge.jpg')
+	  //     }
+	  //   ],
+	  //   aero: [
+	  //     {
+	  //       'step': 'aero1',
+	  //       'desc': 'the door within',
+	  //       'imgSrc': require('../../asset/image/longHighBridge.jpg')
+	  //     },
+	  //     {
+	  //       'step': 'aero2',
+	  //       'desc': 'entrance',
+	  //       'imgSrc': require('../../asset/image/entrance.jpg')
+	  //     },{
+	  //       'step': 'aero3',
+	  //       'desc': 'the long high bridge',
+	  //       'imgSrc': require('../../asset/image/doorWithin.jpg')
+	  //     }
+	  //   ]
+	  //
+	  //
+	  //
+	  // };
+	  //
 	}
 
 /***/ },
-/* 15 */
-/***/ function(module, exports, __webpack_require__) {
+/* 14 */
+/***/ function(module, exports) {
 
-	module.exports = __webpack_require__.p + "2811c440b8033f4440f995d57b9977ee.jpg";
+	// removed by extract-text-webpack-plugin
 
 /***/ },
+/* 15 */,
 /* 16 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	module.exports = __webpack_require__.p + "2a6159b8a582dd0f67c4aac93472c954.jpg";
+	module.exports = "<main class=\"app-method-gallery\">\n  <form novalidate>\n        <button class=\"cycleButton\" id=\"cycle-back\" ng-click=\"appMethodGalleryCtrl.stepBackward()\"><</button>\n        <button class=\"cycleButton\" id=\"cycle-forward\" ng-click=\"appMethodGalleryCtrl.stepForward()\">></button>\n\n      <div class=\"recipeContainer\">\n\n        <h1>\n          {{appMethodGalleryCtrl.currentGalleryMethod\n            [appMethodGalleryCtrl.currentGalleryBrew[\"currentBrewMethod\"]]\n            [appMethodGalleryCtrl.currentBrewMethod].step}}\n        </h1>\n\n        <p>\n          do this:\n          <br>\n          {{appMethodGalleryCtrl.currentGalleryMethod\n            [appMethodGalleryCtrl.currentGalleryBrew[\"currentBrewMethod\"]]\n            [appMethodGalleryCtrl.currentBrewMethod].desc}}\n        </p>\n      </div>\n  </form>\n  <p>{{appMethodGalleryCtrl.currentGalleryMethod\n    [appMethodGalleryCtrl.currentGalleryBrew[\"currentBrewMethod\"]]\n    [appMethodGalleryCtrl.currentBrewMethod].imgSrc}}</p>\n</main>\n";
 
 /***/ },
 /* 17 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	module.exports = __webpack_require__.p + "26972a634845d2751bba737e18ade4a7.jpg";
+	module.exports = {
+		"chemex": [
+			{
+				"step": "chemex1",
+				"desc": "the door within",
+				"imgSrc": "require('../../asset/image/doorWithin.jpg')"
+			},
+			{
+				"step": "chemex2",
+				"desc": "entrance",
+				"imgSrc": " require('../../asset/image/entrance.jpg')"
+			},
+			{
+				"step": "chemex3",
+				"desc": "the long high bridge",
+				"imgSrc": "require('../../asset/image/longHighBridge.jpg')"
+			}
+		],
+		"press": [
+			{
+				"step": "press1",
+				"desc": "the door within",
+				"imgSrc": "require('../../asset/image/entrance.jpg')"
+			},
+			{
+				"step": "press2",
+				"desc": "entrance",
+				"imgSrc": "require('../../asset/image/doorWithin.jpg')"
+			},
+			{
+				"step": "press3",
+				"desc": "the long high bridge",
+				"imgSrc": "require('../../asset/image/longHighBridge.jpg')"
+			}
+		],
+		"aero": [
+			{
+				"step": "aero1",
+				"desc": "the door within",
+				"imgSrc": "require('../../asset/image/longHighBridge.jpg')"
+			},
+			{
+				"step": "aero2",
+				"desc": "entrance",
+				"imgSrc": " require('../../asset/image/entrance.jpg')"
+			},
+			{
+				"step": "aero3",
+				"desc": "the long high bridge",
+				"imgSrc": "require('../../asset/image/doorWithin.jpg')"
+			}
+		]
+	};
 
 /***/ },
 /* 18 */
@@ -31969,28 +32108,38 @@
 
 	'use strict';
 
+	__webpack_require__(19);
+
 	var angular = __webpack_require__(6);
-	angular.module('toBrewApp').directive('appMethodGallery', function () {
+	angular.module('toBrewApp').directive('appNav', function () {
 	  return {
 	    restrict: 'E',
 	    replace: true,
-	    scope: {
-	      imgSrc: '@',
-	      title: '@',
-	      desc: '@'
-	    },
-	    controller: 'AppMethodGalleryController',
-	    controllerAs: 'appMethodGalleryCtrl',
+	    controller: [AppNavController],
+	    controllerAs: 'appNavCtrl',
 	    bindToController: true,
-	    template: __webpack_require__(19)
+	    scope: {
+	      currentBrew: '&',
+	      selectedMethodArr: '='
+	    },
+	    template: __webpack_require__(21)
 	  };
 	});
+
+	function AppNavController() {}
 
 /***/ },
 /* 19 */
 /***/ function(module, exports) {
 
-	module.exports = "<main class=\"app-method-gallery\">\n  <form novalidate>\n    <ol>\n      <li >\n        <button ng-click=\"appMethodGalleryCtrl.cycleBackward(appMethodGalleryCtrl.imageIndex)\"><</button>\n        <button ng-click=\"appMethodGalleryCtrl.cycleForward(appMethodGalleryCtrl.imageIndex)\">></button>\n        <h1>{{appMethodGalleryCtrl.images[appMethodGalleryCtrl.imageIndex].title}}</h1>\n        <p>{{appMethodGalleryCtrl.images[appMethodGalleryCtrl.imageIndex].desc}}</p>\n\n        <img src=\"{{appMethodGalleryCtrl.images[appMethodGalleryCtrl.imageIndex].imgSrc}}\"/>\n\n\n      </li>\n    </ol>\n\n  </form>\n</main>\n";
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 20 */,
+/* 21 */
+/***/ function(module, exports) {
+
+	module.exports = "<main class=\"app-nav\">\n  <nav>\n  <button class=\"navButtons\" ng-click=\"appNavCtrl.currentBrew({selectedMethodArr: 'chemex'})\">chem</button>\n  <button class=\"navButtons\" ng-click=\"appNavCtrl.currentBrew({selectedMethodArr: 'press'})\">press</button>\n  <h1 class=\"navButtons\">toBrew</h1>\n  <button class=\"navButtons\" ng-click=\"appNavCtrl.currentBrew({selectedMethodArr: 'aero'})\">aero</button>\n  <button class=\"navButtons\" ng-click=\"appNavCtrl.currentBrew({selectedMethodArr: 'wave'})\">wave</button>\n</nav>\n</main>\n";
 
 /***/ }
 /******/ ]);

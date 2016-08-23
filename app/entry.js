@@ -7,7 +7,7 @@ const angular = require('angular');
 angular.module('toBrewApp', []);
 
 require('./service/gallery-service');
-// require('../data/brew-methods.json');
 require('./component/app-main');
 require('./component/app-method-gallery');
 require('./component/app-nav');
+// require('./data/brew-methods.json');

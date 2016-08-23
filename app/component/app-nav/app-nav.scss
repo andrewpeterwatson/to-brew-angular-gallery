@@ -1,0 +1,29 @@
+@import "../../scss/_theme.scss";
+
+.app-nav {
+  // TODO: convert this to just the logo
+  font-size: 2em;
+  width: 100%;
+  margin-top: -3%;
+}
+
+nav {
+  margin-left: 40%;
+  margin-top: 0;
+
+}
+
+.navButtons {
+  display: inline-block;
+  background-color: transparent;
+
+
+  &:hover {
+  border-bottom: solid 1px black;
+  }
+
+  &:focus {
+    color: white;
+    border-bottom: solid 1px black;
+  }
+}

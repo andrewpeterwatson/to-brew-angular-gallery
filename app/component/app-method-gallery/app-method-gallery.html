@@ -1,23 +1,42 @@
 <main class="app-method-gallery">
+  <!-- <div class="brew-step-img"> -->
+  <!-- </div> -->
+  <img class="brew-step-img" ng-src="{{appMethodGalleryCtrl.currentGalleryMethod
+    [appMethodGalleryCtrl.currentGalleryBrew.currentBrewMethod]
+    [appMethodGalleryCtrl.currentBrewMethod].imgSrc}}" alt="Description" />
   <form novalidate>
-    <ol>
-      <li >
-        <button ng-click="appMethodGalleryCtrl.stepBackward()"><</button>
-        <button ng-click="appMethodGalleryCtrl.stepForward()">></button>
-        <h1>{{appMethodGalleryCtrl.brewMethods
-          [appMethodGalleryCtrl.currentGalleryBrew["currentBrewMethod"]]
-          [appMethodGalleryCtrl.currentBrewMethod]
-          ['step']}}
+        <button class="cycleButton" id="cycle-back" ng-click="appMethodGalleryCtrl.stepBackward()"><</button>
+        <button class="cycleButton" id="cycle-forward" ng-click="appMethodGalleryCtrl.stepForward()">></button>
+
+      <div class="recipeContainer">
+
+        <h1 id="recipe-step-name">
+          {{appMethodGalleryCtrl.currentGalleryMethod
+            [appMethodGalleryCtrl.currentGalleryBrew["currentBrewMethod"]]
+            [appMethodGalleryCtrl.currentBrewMethod].step}}
         </h1>
-        <p>{{appMethodGalleryCtrl.brewMethods[0][0].desc}}</p>
+        <p id="brew-ratio">
+          brew ratio:
+          {{appMethodGalleryCtrl.currentGalleryMethod
+            [appMethodGalleryCtrl.currentGalleryBrew["currentBrewMethod"]]
+            [0].brewRatio}}g | brew timer: {{appMethodGalleryCtrl.currentGalleryMethod
+              [appMethodGalleryCtrl.currentGalleryBrew["currentBrewMethod"]]
+              [0].brewTimer}} min
+        </p>
 
-        <pre>
-          {{appMainCtrl.testGallery}}
-        </pre>
-        <img src="{{appMethodGalleryCtrl.testBrew[0].imgSrc}}"/>
-
-      </li>
-    </ol>
-
+        <p id="recipe-step-desc">
+          do this:
+          <br>
+          {{appMethodGalleryCtrl.currentGalleryMethod
+            [appMethodGalleryCtrl.currentGalleryBrew["currentBrewMethod"]]
+            [appMethodGalleryCtrl.currentBrewMethod].desc}}
+        </p>
+      </div>
   </form>
+  <!-- <p>
+    {{appMethodGalleryCtrl.testImg}}
+  </p> -->
+  <!-- <img src="../../asset/image/doorWithin.jpg" alt="" /> -->
+  <!-- <pre>{{appMethodGalleryCtrl.currentGalleryMethod}}</pre> -->
+  <!-- <img ng-src="{{appMethodGalleryCtrl.testImg}}" alt="img"/> -->
 </main>
